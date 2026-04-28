@@ -1,0 +1,50 @@
+# Default Configuration for Crash Localization Pipeline
+
+# Model Paths
+models:
+  temporal:
+    checkpoint: "checkpoints/videomae_sotad/best_model"
+    architecture: "MCG-NJU/videomae-base"
+    num_frames: 16
+    patch_size: 16
+
+  spatial:
+    model_name: "Qwen/Qwen2.5-VL-27B-Instruct"
+    quantization: "4bit"  # 4bit, 8bit, fp16
+    batch_size: 4
+
+  classification:
+    detector: "rtdetr-x"
+    confidence_threshold: 0.3
+
+# Training Hyperparameters
+training:
+  temporal:
+    batch_size: 32
+    epochs: 40
+    learning_rate: 1.0e-4
+    weight_decay: 0.05
+    early_stop_patience: 5
+    optimizer: "adamw"
+
+# Data Paths
+data:
+  train_videos: "/path/to/train/videos"
+  test_videos: "/path/to/test/videos"
+  train_temporal_csv: "data/sotad_train_temporal.csv"
+  val_temporal_csv: "data/sotad_val_temporal.csv"
+  ground_truth_200: "data/ground_truth_200.csv"
+
+# Inference Settings
+inference:
+  device: "cuda"
+  temporal_batch_size: 1
+  spatial_batch_size: 4
+  use_cache: true
+  cache_dir: ".cache"
+
+# Evaluation
+evaluation:
+  subset_200_only: false
+  generate_visualizations: false
+  viz_output_dir: "viz_output"
