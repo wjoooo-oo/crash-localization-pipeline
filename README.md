@@ -7,7 +7,7 @@
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 ## 🎯 Overview
-
+Our research is based on ACCIDENT @ CVPR Kaggle challenge. You can find more here: https://www.kaggle.com/competitions/accident/overview.
 This pipeline predicts three attributes of traffic crashes from video:
 - **T (Temporal)**: When did the crash occur? (onset time in seconds)
 - **S (Spatial)**: Where in the frame? (bounding box coordinates)
